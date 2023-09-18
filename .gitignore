@@ -1,0 +1,12 @@
+
+*.png
+
+GUI Versions/SMD_1.00.ui
+
+*.xml
+
+*.pyc
+
+SMD_GUI/.idea/SMD Modern.iml
+
+SMD_GUI/files/sound.wav
