@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1394</width>
-    <height>958</height>
+    <width>1359</width>
+    <height>963</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -585,7 +585,7 @@ background-color: rgb(0, 0, 0);
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item alignment="Qt::AlignTop">
+          <item>
            <widget class="QPushButton" name="homeButton">
             <property name="font">
              <font>
@@ -622,11 +622,20 @@ background-color: rgb(98, 160, 234);
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QTreeWidget" name="treeWidget">
+            <column>
+             <property name="text">
+              <string>1</string>
+             </property>
+            </column>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
        <item>
-        <widget class="QStackedWidget" name="scan_stackedWidget">
+        <widget class="QStackedWidget" name="stackedWidget">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -636,7 +645,7 @@ background-color: rgb(98, 160, 234);
          <property name="currentIndex">
           <number>0</number>
          </property>
-         <widget class="QWidget" name="scan_stackedWidgetPage1">
+         <widget class="QWidget" name="stackedWidgetPage1">
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <property name="leftMargin">
             <number>0</number>
@@ -1007,6 +1016,25 @@ border-image: url(:/images/ScanClicked.png)
             </widget>
            </item>
            <item>
+            <widget class="QWidget" name="widget_4" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>100</height>
+              </size>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
             <widget class="QFrame" name="gif_frame">
              <property name="minimumSize">
               <size>
@@ -1200,6 +1228,28 @@ To change the baudrate value, it must first disable the torque.</string>
                 <widget class="QWidget" name="widget" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
                   <item>
+                   <widget class="QWidget" name="widget_6" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                     <item>
+                      <widget class="QLabel" name="label_3">
+                       <property name="text">
+                        <string>Select SMD ID:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QComboBox" name="comboBox_2"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QWidget" name="widget_10" native="true">
                     <property name="maximumSize">
                      <size>
@@ -1208,15 +1258,7 @@ To change the baudrate value, it must first disable the torque.</string>
                      </size>
                     </property>
                     <layout class="QGridLayout" name="gridLayout_4">
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_5">
-                       <property name="text">
-                        <string>The default operating mode of the actuators is Position Control Mode. 
-Can select Velocity or Torque Control Mode from listed modes.</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
+                     <item row="1" column="1">
                       <widget class="QComboBox" name="comboBox_3">
                        <property name="maximumSize">
                         <size>
@@ -1244,6 +1286,14 @@ Can select Velocity or Torque Control Mode from listed modes.</string>
                          <string>PWM</string>
                         </property>
                        </item>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_5">
+                       <property name="text">
+                        <string>The default operating mode of the actuators is Position Control Mode. 
+Can select Velocity or Torque Control Mode from listed modes.</string>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -1317,13 +1367,41 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
+                      <widget class="QWidget" name="widget_7" native="true">
+                       <layout class="QHBoxLayout" name="horizontalLayout_15">
+                        <item>
+                         <widget class="QLabel" name="label_9">
+                          <property name="text">
+                           <string>Autotuner:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="pushButton">
+                          <property name="text">
+                           <string>Autotune</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QWidget" name="widget_12" native="true">
                        <layout class="QGridLayout" name="gridLayout_6">
                         <item row="1" column="0">
-                         <widget class="QSpinBox" name="spinBox"/>
+                         <widget class="QSpinBox" name="spinBox">
+                          <property name="maximum">
+                           <number>10000</number>
+                          </property>
+                         </widget>
                         </item>
                         <item row="1" column="1">
-                         <widget class="QSpinBox" name="spinBox_2"/>
+                         <widget class="QSpinBox" name="spinBox_2">
+                          <property name="maximum">
+                           <number>10000</number>
+                          </property>
+                         </widget>
                         </item>
                         <item row="0" column="1">
                          <widget class="QLabel" name="label_11">
@@ -1369,7 +1447,11 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_3"/>
+                      <widget class="QSpinBox" name="spinBox_3">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
                      </item>
                      <item>
                       <widget class="QLabel" name="label_14">
@@ -1463,7 +1545,11 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_6"/>
+                      <widget class="QSpinBox" name="spinBox_6">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
                      </item>
                      <item>
                       <widget class="QLabel" name="label_21">
@@ -1557,7 +1643,11 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_9"/>
+                      <widget class="QSpinBox" name="spinBox_9">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
                      </item>
                      <item>
                       <widget class="QLabel" name="label_28">
@@ -1649,10 +1739,13 @@ and the changes made are written into the actuator with Write Parameters.</strin
                      </sizepolicy>
                     </property>
                     <property name="minimum">
-                     <number>-100</number>
+                     <number>-1000</number>
                     </property>
                     <property name="maximum">
-                     <number>100</number>
+                     <number>1000</number>
+                    </property>
+                    <property name="singleStep">
+                     <number>10</number>
                     </property>
                     <property name="pageStep">
                      <number>10</number>
@@ -1676,7 +1769,14 @@ and the changes made are written into the actuator with Write Parameters.</strin
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_10"/>
+                   <widget class="QDoubleSpinBox" name="doubleSpinBox_10">
+                    <property name="minimum">
+                     <double>-1000.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>1000.000000000000000</double>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
