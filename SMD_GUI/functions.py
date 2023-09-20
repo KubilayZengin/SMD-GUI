@@ -89,6 +89,7 @@ class MainWindow(QMainWindow):
         self.ui.doubleSpinBox_10.editingFinished.connect(lambda: self.pwm(int(self.current_id)))
         self.ui.doubleSpinBox_10.editingFinished.connect(self.update_slider)
         self.ui.pwm_slider.valueChanged.connect(self.update_dutyCycle)
+        self.ui.pwm_slider.valueChanged.connect(lambda: self.pwm(int(self.current_id)))
         self.checkBoxes = [self.ui.checkBox, self.ui.checkBox_2, self.ui.checkBox_3, 
                            self.ui.checkBox_4, self.ui.checkBox_5, self.ui.checkBox_6]
         self.ui.scan_button.clicked.connect(self.scan_smd)
@@ -162,18 +163,35 @@ class MainWindow(QMainWindow):
                 self.ui.menubar_frame.show()
             
     def sensor_scan(self):
+        sensors = {"Buzzer Sensor": [Index.Buzzer_1, Index.Buzzer_2, Index.Buzzer_3, Index.Buzzer_4, Index.Buzzer_5], "Button": [Index.Button_1, Index.Button_2, Index.Button_3, Index.Button_4, Index.Button_5],"Light": [Index.Light_1, Index.Light_2, Index.Light_3, Index.Light_4, Index.Light_5], "Joystick": [Index.Joystick_1, Index.Joystick_2, Index.Joystick_3, Index.Joystick_4, Index.Joystick_5], "Distance": [Index.Distance_1, Index.Distance_2, Index.Distance_3, Index.Distance_4, Index.Distance_5], "QTR": [Index.QTR_1, Index.QTR_2, Index.QTR_3, Index.QTR_4, Index.QTR_5], "Potentiometer": [Index.Pot_1, Index.Pot_2, Index.Pot_3, Index.Pot_4, Index.Pot_5], "IMU": [Index.IMU_1, Index.IMU_2, Index.IMU_3, Index.IMU_4, Index.IMU_5]}
         if self.smd_id:
             for i, id in enumerate(self.smd_id):
                 topLevelItem = QTreeWidgetItem(self.ui.treeWidget)
                 childItem = QTreeWidgetItem(topLevelItem, ["Motor Page"])
                 self.ui.treeWidget.topLevelItem(i).setText(0,f"SMD ID: {id}")
                 self.sensor_id = self.master.scan_sensors(id)
+                addonsItem =QTreeWidgetItem(topLevelItem, ["Add ons:"])
                 print(self.sensor_id)
-            for i, id in enumerate(self.sensor_id):
-                self.childeren.append(QTreeWidgetItem())
-                self.ui.treeWidget.topLevelItem(0).child(1).addChildren(self.childeren)
-                self.ui.treeWidget.topLevelItem(0).child(1).child(i).setText(0, f"sensor{i}: {id}")
-                
+                if self.sensor_id:
+                    for _id in self.sensor_id:
+                        for j in range(5):
+                            if _id == sensors["Buzzer Sensor"][j]:
+                                buzzeritem = QTreeWidgetItem(addonsItem, ["Buzzer Sensor"])
+                            elif _id == sensors["Button"][j]:
+                                buttonitem = QTreeWidgetItem(addonsItem, ["Button"])
+                            elif _id == sensors["Light"][j]:
+                                lightitem = QTreeWidgetItem(addonsItem, ["Light"])
+                            elif _id == sensors["Joystick"][j]:
+                                joystickitem = QTreeWidgetItem(addonsItem, ["Joystick"])
+                            elif _id == sensors["Distance"][j]:
+                                distanceitem = QTreeWidgetItem(addonsItem, ["Distance"])
+                            elif _id == sensors["QTR"][j]:
+                                qtritem = QTreeWidgetItem(addonsItem, ["QTR"])
+                            elif _id == sensors["Potentiometer"][j]:
+                                potitem = QTreeWidgetItem(addonsItem, ["Potentiometer"])
+                            elif _id == sensors["IMU"][j]:
+                                imuitem = QTreeWidgetItem(addonsItem, ["IMU"])
+
     def control_clicked(self, item):
         top_level_item_count = self.ui.treeWidget.topLevelItemCount()
         for i in range(top_level_item_count):
@@ -187,6 +205,10 @@ class MainWindow(QMainWindow):
                 if current_index == 1 or current_index == 0: 
                     self.ui.stackedWidget.setCurrentIndex(2)
                     self.add_id()
+            elif self.top_level_item.child(1).child(0).isSelected():
+                current_index = self.ui.stackedWidget.currentIndex()
+                if current_index == 1 or current_index == 0 or current_index == 2:
+                    self.ui.stackedWidget.setCurrentIndex(3)
     def add_id(self):
         for i, id in enumerate(self.smd_id):
             self.ui.comboBox_2.addItem(str(self.smd_id[i]))
