@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
         self.tor_timer.start(500)
         self.ui.ports_comboBox.activated.connect(self.activatedComboBox)
         self.ui.comboBox.activated.connect(self.activatedBaudrate)
-        self.ui.lineEdit_4.textChanged.connect(self.update_id)
+        self.ui.lineEdit_4.returnPressed.connect(self.update_id)
         self.ui.comboBox_3.activated.connect(lambda : self.configuration_operation(int(self.current_id)))
         self.ui.pushButton_3.clicked.connect(lambda : self.torque_enable(int(self.current_id)))
         self.ui.spinBox_3.editingFinished.connect(lambda: self.set_position(int(self.current_id)))
@@ -88,6 +88,7 @@ class MainWindow(QMainWindow):
         self.ui.doubleSpinBox_9.editingFinished.connect(lambda: self.d_torque(int(self.current_id)))
         self.ui.doubleSpinBox_10.editingFinished.connect(lambda: self.pwm(int(self.current_id)))
         self.ui.doubleSpinBox_10.editingFinished.connect(self.update_slider)
+        self.ui.treeWidget.itemClicked.connect(self.motor_page)
         self.ui.pwm_slider.valueChanged.connect(self.update_dutyCycle)
         self.ui.pwm_slider.valueChanged.connect(lambda: self.pwm(int(self.current_id)))
         self.checkBoxes = [self.ui.checkBox, self.ui.checkBox_2, self.ui.checkBox_3, 
@@ -95,7 +96,8 @@ class MainWindow(QMainWindow):
         self.ui.scan_button.clicked.connect(self.scan_smd)
         self.ui.homeButton.clicked.connect(self.turn_scan_page)
         self.ui.treeWidget.itemClicked.connect(self.control_clicked)
-        self.ui.comboBox_2.currentIndexChanged.connect(self.get_id)
+        self.ui.tabWidget.currentChanged.connect(self.set_operation)
+        #self.ui.comboBox_2.currentIndexChanged.connect(self.get_id)
         self.file_path = None
         self.torque_enabled = False
         self.smd_id = []
@@ -204,26 +206,24 @@ class MainWindow(QMainWindow):
                 current_index = self.ui.stackedWidget.currentIndex()
                 if current_index == 1 or current_index == 0: 
                     self.ui.stackedWidget.setCurrentIndex(2)
-                    self.add_id()
             elif self.top_level_item.child(1).child(0).isSelected():
                 current_index = self.ui.stackedWidget.currentIndex()
                 if current_index == 1 or current_index == 0 or current_index == 2:
                     self.ui.stackedWidget.setCurrentIndex(3)
-    def add_id(self):
-        for i, id in enumerate(self.smd_id):
-            self.ui.comboBox_2.addItem(str(self.smd_id[i]))
-    def get_id(self):
-        self.current_id = self.ui.comboBox_2.currentText()
-        print(self.current_id)
     def update_id(self):
-        item_count = self.ui.treeWidget.topLevelItemCount()
-        for i in range(item_count):
-            if self.ui.treeWidget.topLevelItem(i).isSelected:
-                current_id = self.ui.treeWidget.topLevelItem(i).text(0)[-1]
-                self.new_id = self.ui.lineEdit_4.text()
-                self.master.update_driver_id(int(current_id), int(self.new_id))
-            break 
-        
+        text = self.ui.lineEdit_4.text()
+        selected_item = self.ui.treeWidget.currentItem()
+        current_id = selected_item.text(0)[-1]
+        new_id = text
+        if selected_item is not None:
+            selected_item.setText(0, f"SMD ID: {text}")
+            self.ui.lineEdit_4.clear()
+            self.master.update_driver_id(int(current_id), int(new_id))
+    def motor_page(self, item, column):
+        parent_item = item.parent()
+        if parent_item is not None:
+            self.current_id = parent_item.text(0)[-1]
+            self.master.attach(Red(int(self.current_id)))
     def activatedBaudrate(self):
         self.driverBaudrate = self.ui.comboBox.currentText()                                 
         self.master.update_driver_baudrate(int(self.new_id), int(self.driverBaudrate))
@@ -247,7 +247,26 @@ class MainWindow(QMainWindow):
     def rpm(self, id):
         rpm = self.ui.spinBox_2.value()
         self.master.set_shaft_rpm(id, rpm)
-
+    
+    def set_operation(self,index):
+        id = int(self.current_id)
+        if index == 1:
+            self.master.set_operation_mode(id, 1)
+        elif index == 2:
+            self.master.set_operation_mode(id, 2)
+        elif index == 3:
+            self.master.set_operation_mode(id, 3)
+        elif index == 4:
+            self.master.set_operation_mode(id, 0)
+        
+    def set_pos(self, id):
+        self.master.set_operation_mode(id, 1) 
+    def set_vel(self, id):
+        self.master.set_operation_mode(id, 2)
+    def set_tor(self, id):
+        self.master.set_operation_mode(id, 3)
+    def set_pwm(self, id):
+        self.master.set_operation_mode(id, 0)
     def set_position(self, id):
         set_point_position = self.ui.spinBox_3.value()
         print(set_point_position)
