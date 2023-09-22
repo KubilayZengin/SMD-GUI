@@ -59,17 +59,15 @@ class MainWindow(QMainWindow):
         self.timer.start(500)
         self.pos_timer= QTimer(self)
         self.pos_timer.timeout.connect(lambda: self.get_position(int(self.current_id)))
-        self.pos_timer.start(500)
+        
         self.vel_timer = QTimer(self)
         self.vel_timer.timeout.connect(lambda: self.get_position(int(self.current_id)))
-        self.vel_timer.start(500)
         self.tor_timer = QTimer(self)
         self.tor_timer.timeout.connect(lambda: self.get_torque(int(self.current_id)))
-        self.tor_timer.start(500)
         self.ui.ports_comboBox.activated.connect(self.activatedComboBox)
         self.ui.comboBox.activated.connect(self.activatedBaudrate)
         self.ui.lineEdit_4.returnPressed.connect(self.update_id)
-        self.ui.comboBox_3.activated.connect(lambda : self.configuration_operation(int(self.current_id)))
+        #self.ui.comboBox_3.activated.connect(lambda : self.configuration_operation(int(self.current_id)))
         self.ui.pushButton_3.clicked.connect(lambda : self.torque_enable(int(self.current_id)))
         self.ui.spinBox_3.editingFinished.connect(lambda: self.set_position(int(self.current_id)))
         self.ui.spinBox_6.editingFinished.connect(lambda: self.set_velocity(int(self.current_id)))
@@ -95,8 +93,8 @@ class MainWindow(QMainWindow):
                            self.ui.checkBox_4, self.ui.checkBox_5, self.ui.checkBox_6]
         self.ui.scan_button.clicked.connect(self.scan_smd)
         self.ui.homeButton.clicked.connect(self.turn_scan_page)
-        self.ui.treeWidget.itemClicked.connect(self.control_clicked)
-        self.ui.tabWidget.currentChanged.connect(self.set_operation)
+        self.ui.treeWidget.itemClicked.connect(self.control_page)
+        self.ui.tabWidget.tabBarClicked.connect(self.set_operation)
         #self.ui.comboBox_2.currentIndexChanged.connect(self.get_id)
         self.file_path = None
         self.torque_enabled = False
@@ -210,6 +208,32 @@ class MainWindow(QMainWindow):
                 current_index = self.ui.stackedWidget.currentIndex()
                 if current_index == 1 or current_index == 0 or current_index == 2:
                     self.ui.stackedWidget.setCurrentIndex(3)
+                    
+    def control_page(self, item):
+        if item.text(0) == "Motor Page":
+            current_index = self.ui.stackedWidget.currentIndex()
+            self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.spinBox.clear()
+            self.ui.spinBox_2.clear()
+            self.ui.spinBox_3.clear()
+            self.ui.spinBox_4.clear()
+            self.ui.spinBox_6.clear()
+            self.ui.spinBox_7.clear()
+            self.ui.spinBox_9.clear()
+            self.ui.doubleSpinBox.clear()
+            self.ui.doubleSpinBox_2.clear()
+            self.ui.doubleSpinBox_3.clear()
+            self.ui.doubleSpinBox_4.clear()
+            self.ui.doubleSpinBox_5.clear()
+            self.ui.doubleSpinBox_6.clear()
+            self.ui.doubleSpinBox_7.clear()
+            self.ui.doubleSpinBox_8.clear()
+            self.ui.doubleSpinBox_9.clear()
+            self.ui.doubleSpinBox_10.clear()
+        else:
+            current_index = self.ui.stackedWidget.currentIndex()
+            self.ui.stackedWidget.setCurrentIndex(1)
+        
     def update_id(self):
         text = self.ui.lineEdit_4.text()
         selected_item = self.ui.treeWidget.currentItem()
@@ -217,8 +241,8 @@ class MainWindow(QMainWindow):
         new_id = text
         if selected_item is not None:
             selected_item.setText(0, f"SMD ID: {text}")
-            self.ui.lineEdit_4.clear()
             self.master.update_driver_id(int(current_id), int(new_id))
+            self.ui.lineEdit_4.clear()
     def motor_page(self, item, column):
         parent_item = item.parent()
         if parent_item is not None:
@@ -248,7 +272,7 @@ class MainWindow(QMainWindow):
         rpm = self.ui.spinBox_2.value()
         self.master.set_shaft_rpm(id, rpm)
     
-    def set_operation(self,index):
+    def set_operation(self, index):
         id = int(self.current_id)
         if index == 1:
             self.master.set_operation_mode(id, 1)
@@ -260,7 +284,7 @@ class MainWindow(QMainWindow):
             self.master.set_operation_mode(id, 0)
         
     def set_pos(self, id):
-        self.master.set_operation_mode(id, 1) 
+        self.master.set_operation_mode(id, 1)
     def set_vel(self, id):
         self.master.set_operation_mode(id, 2)
     def set_tor(self, id):
@@ -271,13 +295,16 @@ class MainWindow(QMainWindow):
         set_point_position = self.ui.spinBox_3.value()
         print(set_point_position)
         self.master.set_position(id, int(set_point_position))
+        self.pos_timer.start(500)
         print(id)
     def set_velocity(self, id):
         set_point_velocity = self.ui.spinBox_6.value()
         self.master.set_velocity(id, set_point_velocity)
+        self.vel_timer.start(500)
     def set_torque(self, id):
         set_point_torque = self.ui.spinBox_9.value()
         self.master.set_torque(id, set_point_torque)
+        self.tor_timer.start(500)
 
     def get_position(self, id):
         self.ui.lineEdit.setText(str(self.master.get_position(id)))
@@ -290,6 +317,21 @@ class MainWindow(QMainWindow):
         
     def autotuner(self, id):
         self.master.pid_tuner(id)
+        pid_p = []
+        pid_p = self.master.get_control_parameters_position(id)
+        self.ui.doubleSpinBox.setValue(pid_p[0])
+        self.ui.doubleSpinBox_2.setValue(pid_p[1])
+        self.ui.doubleSpinBox_3.setValue(pid_p[2])
+        pid_v = []
+        pid_v = self.master.get_control_parameters_velocity(id)
+        self.ui.doubleSpinBox_5.setValue(pid_v[0])
+        self.ui.doubleSpinBox_4.setValue(pid_v[1])
+        self.ui.doubleSpinBox_6.setValue(pid_v[2])
+        pid_t = []
+        pid_t = self.master.get_control_parameters_torque(id)
+        self.ui.doubleSpinBox_8.setValue(pid_t[0])
+        self.ui.doubleSpinBox_7.setValue(pid_t[1])
+        self.ui.doubleSpinBox_9.setValue(pid_t[2])
         
     def p_position(self,id):
         p = self.ui.doubleSpinBox.value()
@@ -325,7 +367,8 @@ class MainWindow(QMainWindow):
         duty_cycle = self.ui.doubleSpinBox_10.value()
         self.master.set_duty_cycle(id, duty_cycle)
         
-    def update_slider(self, value):
+    def update_slider(self):
+        value = self.ui.doubleSpinBox_10.value()
         self.ui.pwm_slider.setValue(value* 10)
     def update_dutyCycle(self, value):
         self.ui.doubleSpinBox_10.setValue(value/10)
