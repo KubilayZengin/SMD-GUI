@@ -14,6 +14,10 @@ from PyQt5.QtGui import QIcon, QPixmap
 from serial.tools.list_ports_linux import comports
 import subprocess
 from smd.red import *
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.animation import FuncAnimation
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -65,7 +69,7 @@ class MainWindow(QMainWindow):
         self.tor_timer = QTimer(self)
         self.tor_timer.timeout.connect(lambda: self.get_torque(int(self.current_id)))
         self.ui.ports_comboBox.activated.connect(self.activatedComboBox)
-        self.ui.comboBox.activated.connect(self.activatedBaudrate)
+        #self.ui.comboBox.activated.connect(self.activatedBaudrate)
         self.ui.lineEdit_4.returnPressed.connect(self.update_id)
         #self.ui.comboBox_3.activated.connect(lambda : self.configuration_operation(int(self.current_id)))
         self.ui.pushButton_3.clicked.connect(lambda : self.torque_enable(int(self.current_id)))
@@ -85,7 +89,12 @@ class MainWindow(QMainWindow):
         self.ui.doubleSpinBox_7.editingFinished.connect(lambda: self.i_torque(int(self.current_id)))
         self.ui.doubleSpinBox_9.editingFinished.connect(lambda: self.d_torque(int(self.current_id)))
         self.ui.doubleSpinBox_10.editingFinished.connect(lambda: self.pwm(int(self.current_id)))
+        self.ui.spinBox_4.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
+        self.ui.spinBox_5.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
+        self.ui.spinBox_7.editingFinished.connect(lambda : self.limits_velocity(int(self.current_id)))
+        self.ui.spinBox_10.editingFinished.connect(lambda : self.limit_torque(int(self.current_id)))
         self.ui.doubleSpinBox_10.editingFinished.connect(self.update_slider)
+        self.ui.lineEdit_4.returnPressed.connect(self.driver_info)
         self.ui.treeWidget.itemClicked.connect(self.motor_page)
         self.ui.pwm_slider.valueChanged.connect(self.update_dutyCycle)
         self.ui.pwm_slider.valueChanged.connect(lambda: self.pwm(int(self.current_id)))
@@ -95,13 +104,16 @@ class MainWindow(QMainWindow):
         self.ui.homeButton.clicked.connect(self.turn_scan_page)
         self.ui.treeWidget.itemClicked.connect(self.control_page)
         self.ui.tabWidget.tabBarClicked.connect(self.set_operation)
+        self.figure, self.ax = plt.subplots()
+        self.canvas = FigureCanvas(self.figure)
+        self.canvas.setParent(self.ui.frame)
         #self.ui.comboBox_2.currentIndexChanged.connect(self.get_id)
         self.file_path = None
         self.torque_enabled = False
         self.smd_id = []
         self.sensor_id = []
         self.childeren = []
-        self.operation_modes = {"PWM": 0, "Position":1, "Velocity": 2, "Torque": 3}
+        self.enterCount = 0
 
     def save_as(self):
         file_name, _ = QFileDialog.getSaveFileName(self, "Save As", "", "Metin Dosyaları (*.txt);;Tüm Dosyalar (*)")
@@ -191,23 +203,6 @@ class MainWindow(QMainWindow):
                                 potitem = QTreeWidgetItem(addonsItem, ["Potentiometer"])
                             elif _id == sensors["IMU"][j]:
                                 imuitem = QTreeWidgetItem(addonsItem, ["IMU"])
-
-    def control_clicked(self, item):
-        top_level_item_count = self.ui.treeWidget.topLevelItemCount()
-        for i in range(top_level_item_count):
-            self.top_level_item = self.ui.treeWidget.topLevelItem(i)
-            if self.top_level_item is not None and self.top_level_item.isSelected():
-                current_index = self.ui.stackedWidget.currentIndex()
-                if current_index == 0 or current_index == 2:
-                    self.ui.stackedWidget.setCurrentIndex(1)
-            elif self.top_level_item is not None and self.top_level_item.child(0).isSelected():
-                current_index = self.ui.stackedWidget.currentIndex()
-                if current_index == 1 or current_index == 0: 
-                    self.ui.stackedWidget.setCurrentIndex(2)
-            elif self.top_level_item.child(1).child(0).isSelected():
-                current_index = self.ui.stackedWidget.currentIndex()
-                if current_index == 1 or current_index == 0 or current_index == 2:
-                    self.ui.stackedWidget.setCurrentIndex(3)
                     
     def control_page(self, item):
         if item.text(0) == "Motor Page":
@@ -234,15 +229,22 @@ class MainWindow(QMainWindow):
             current_index = self.ui.stackedWidget.currentIndex()
             self.ui.stackedWidget.setCurrentIndex(1)
         
+    def driver_info(self):
+        id = self.ui.lineEdit_4.text()
+        text = self.master.get_driver_info(int(id))
+        self.ui.label_3.setText(str(text))
+    
     def update_id(self):
+        baudrate = self.ui.comboBox.currentText()
         text = self.ui.lineEdit_4.text()
         selected_item = self.ui.treeWidget.currentItem()
         current_id = selected_item.text(0)[-1]
         new_id = text
         if selected_item is not None:
             selected_item.setText(0, f"SMD ID: {text}")
+            self.master.update_driver_baudrate(int(current_id), int(baudrate))
             self.master.update_driver_id(int(current_id), int(new_id))
-            self.ui.lineEdit_4.clear()
+            
     def motor_page(self, item, column):
         parent_item = item.parent()
         if parent_item is not None:
@@ -252,9 +254,37 @@ class MainWindow(QMainWindow):
         self.driverBaudrate = self.ui.comboBox.currentText()                                 
         self.master.update_driver_baudrate(int(self.new_id), int(self.driverBaudrate))
         
+    def plot_graph(self, xdata: list):
+        if hasattr(self, 'ani'):
+            self.ani.event_source.stop()  # Eski animasyonu durdur
+
+        xdata = []
+        ydata = []
+        start_time = time.time()
+
+        self.ax.clear()
+        self.ax.set_xlim(0, 10)
+        self.ax.set_ylim(0, 100)
+
+        xline, = self.ax.plot([], [], linewidth=2.0)
+
+        def animate(i):
+            current_time = time.time()
+            elapsed_time = current_time - start_time
+
+            ydata.append(elapsed_time ** 2)
+
+            xline.set_data(xdata, ydata)
+
+            return xline,
+
+        self.ani = FuncAnimation(self.figure, animate, blit=True, interval=10, cache_frame_data=False)
+        self.canvas.draw()
+        self.figure.patch.set_alpha(0)
+        self.ax.patch.set_alpha(0)
     def configuration_operation(self, id):
         self.operation_mode = self.ui.comboBox_3.currentText()
-        print(self.operation_mode)
+        print(self.operation_mode) 
         for mode in self.operation_modes:
             if self.operation_mode == mode:
                 print(self.master.set_operation_mode(id, self.operation_modes[mode]))
@@ -296,19 +326,31 @@ class MainWindow(QMainWindow):
         print(set_point_position)
         self.master.set_position(id, int(set_point_position))
         self.pos_timer.start(500)
+        xdata = self.ui.lineEdit.text()
+        self.plot_graph(xdata)
         print(id)
+    def limits_position(self, id):
+        max_position = self.ui.spinBox_4.value()
+        min_poisiton = self.ui.spinBox_5.value()
+        self.master.set_position_limits(id, min_poisiton, max_position)
     def set_velocity(self, id):
         set_point_velocity = self.ui.spinBox_6.value()
         self.master.set_velocity(id, set_point_velocity)
         self.vel_timer.start(500)
+        
+    def limits_velocity(self, id):
+        limit = self.ui.spinBox_7.value()
+        self.master.set_velocity_limit(id, limit)
     def set_torque(self, id):
         set_point_torque = self.ui.spinBox_9.value()
         self.master.set_torque(id, set_point_torque)
         self.tor_timer.start(500)
+    def limit_torque(self, id):
+        limit = self.ui.spinBox_10.value()
+        self.master.set_torque_limit(id, limit)
 
     def get_position(self, id):
         self.ui.lineEdit.setText(str(self.master.get_position(id)))
-        
     def get_velocity(self, id):
         self.ui.lineEdit_2.setText(str(self.master.get_velocity(id)))
         
