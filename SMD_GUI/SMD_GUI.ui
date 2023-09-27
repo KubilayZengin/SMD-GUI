@@ -1175,7 +1175,11 @@ border-image: url(:/images/ScanClicked.png)
                   <widget class="QWidget" name="widget_3" native="true">
                    <layout class="QGridLayout" name="gridLayout_10">
                     <item row="1" column="1">
-                     <widget class="QLineEdit" name="lineEdit_4"/>
+                     <widget class="QLineEdit" name="lineEdit_4">
+                      <property name="placeholderText">
+                       <string>1-10</string>
+                      </property>
+                     </widget>
                     </item>
                     <item row="1" column="0">
                      <widget class="QLabel" name="label_34">
@@ -1411,8 +1415,17 @@ and the changes made are written into the actuator with Write Parameters.</strin
                      </item>
                      <item>
                       <widget class="QSpinBox" name="spinBox_3">
+                       <property name="suffix">
+                        <string/>
+                       </property>
+                       <property name="minimum">
+                        <number>-100000</number>
+                       </property>
                        <property name="maximum">
-                        <number>10000</number>
+                        <number>100000</number>
+                       </property>
+                       <property name="value">
+                        <number>0</number>
                        </property>
                       </widget>
                      </item>
@@ -1476,7 +1489,14 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_4"/>
+                      <widget class="QSpinBox" name="spinBox_4">
+                       <property name="minimum">
+                        <number>-100000</number>
+                       </property>
+                       <property name="maximum">
+                        <number>100000</number>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -1492,7 +1512,14 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_5"/>
+                      <widget class="QSpinBox" name="spinBox_5">
+                       <property name="minimum">
+                        <number>-100000</number>
+                       </property>
+                       <property name="maximum">
+                        <number>100000</number>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -1501,23 +1528,10 @@ and the changes made are written into the actuator with Write Parameters.</strin
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_5">
-                 <property name="maximumSize">
-                  <size>
-                   <width>100</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>Start</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QFrame" name="frame">
                  <property name="minimumSize">
                   <size>
-                   <width>0</width>
+                   <width>800</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -1527,7 +1541,6 @@ and the changes made are written into the actuator with Write Parameters.</strin
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_16"/>
                 </widget>
                </item>
               </layout>
@@ -1587,7 +1600,11 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_7"/>
+                      <widget class="QSpinBox" name="spinBox_7">
+                       <property name="maximum">
+                        <number>100000</number>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -1605,7 +1622,7 @@ and the changes made are written into the actuator with Write Parameters.</strin
                      <item>
                       <widget class="QSpinBox" name="spinBox_6">
                        <property name="maximum">
-                        <number>10000</number>
+                        <number>100000</number>
                        </property>
                       </widget>
                      </item>
@@ -1626,14 +1643,13 @@ and the changes made are written into the actuator with Write Parameters.</strin
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_6">
-                 <property name="text">
-                  <string>Start</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QFrame" name="frame_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>800</width>
+                   <height>0</height>
+                  </size>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -1693,7 +1709,11 @@ and the changes made are written into the actuator with Write Parameters.</strin
                       </widget>
                      </item>
                      <item>
-                      <widget class="QSpinBox" name="spinBox_10"/>
+                      <widget class="QSpinBox" name="spinBox_10">
+                       <property name="maximum">
+                        <number>100000</number>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -1738,14 +1758,13 @@ and the changes made are written into the actuator with Write Parameters.</strin
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_8">
-                 <property name="text">
-                  <string>start</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <widget class="QFrame" name="frame_3">
+                 <property name="minimumSize">
+                  <size>
+                   <width>800</width>
+                   <height>0</height>
+                  </size>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
