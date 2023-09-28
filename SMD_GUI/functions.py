@@ -62,8 +62,8 @@ class MainWindow(QMainWindow):
         #self.ui.actionSave_as.triggered.connect(self.save_as)
         #self.ui.actionOpen.triggered.connect(self.open_file)
         self.timer = QTimer(self)
-        self.timer.timeout.connect(self.update_comboBox)
-        self.timer.start(500)
+        #self.timer.timeout.connect(self.update_comboBox)
+        #self.timer.start(500)
         
         self.pos_timer= QTimer(self)
         self.pos_timer.timeout.connect(lambda: self.plot_position(int(self.current_id)))
@@ -231,7 +231,7 @@ class MainWindow(QMainWindow):
                     for _id in self.sensor_id:
                         for j in range(5):
                             if _id == sensors["Buzzer Sensor"][j]:
-                                buzzeritem = QTreeWidgetItem(addonsItem, ["Buzzer Sensor"])
+                                buzzeritem = QTreeWidgetItem(addonsItem, ["Buzzer Sensor:"])
                             elif _id == sensors["Button"][j]:
                                 buttonitem = QTreeWidgetItem(addonsItem, ["Button"])
                             elif _id == sensors["Light"][j]:
@@ -251,24 +251,13 @@ class MainWindow(QMainWindow):
         if item.text(0) == "Motor Page":
             current_index = self.ui.stackedWidget.currentIndex()
             self.ui.stackedWidget.setCurrentIndex(2)
-            self.ui.spinBox.clear()
-            self.ui.spinBox_2.clear()
-            self.ui.spinBox_3.clear()
-            self.ui.spinBox_4.clear()
-            self.ui.spinBox_6.clear()
-            self.ui.spinBox_7.clear()
-            self.ui.spinBox_9.clear()
-            self.ui.doubleSpinBox.clear()
-            self.ui.doubleSpinBox_2.clear()
-            self.ui.doubleSpinBox_3.clear()
-            self.ui.doubleSpinBox_4.clear()
-            self.ui.doubleSpinBox_5.clear()
-            self.ui.doubleSpinBox_6.clear()
-            self.ui.doubleSpinBox_7.clear()
-            self.ui.doubleSpinBox_8.clear()
-            self.ui.doubleSpinBox_9.clear()
-            self.ui.doubleSpinBox_10.clear()
-
+            data = self.master.get_variables(int(self.current_id), [Index.OutputShaftCPR, Index.OutputShaftRPM, Index.TorqueEnable, Index.MinimumPositionLimit, Index.MaximumPositionLimit, Index.TorqueLimit, Index.VelocityLimit])
+            self.ui.spinBox.setValue(data[0])
+            self.ui.spinBox_2.setValue(data[1])
+            self.ui.spinBox_4.setValue(data[3])
+            self.ui.spinBox_5.setValue(data[4])
+            self.ui.spinBox_7.setValue(data[6])
+            self.ui.spinBox_10.setValue(data[5])
         else:
             current_index = self.ui.stackedWidget.currentIndex()
             self.ui.stackedWidget.setCurrentIndex(1)
@@ -307,8 +296,8 @@ class MainWindow(QMainWindow):
             self.line1, = self.ax.plot(self.posXdata, self.posYdata)
         # x ve y ekseni sınırlarını ayarlayabil20irsiniz
         
-        max = self.ui.spinBox_4.value()
-        min = self.ui.spinBox_5.value()
+        min = self.ui.spinBox_4.value()
+        max = self.ui.spinBox_5.value()
         try:
             self.ax.set_ylim(min, max)
         except:
@@ -317,9 +306,12 @@ class MainWindow(QMainWindow):
         self.posXdata.append(self.cursorPos * 0.1)
         self.posYdata.extend(text)
         print(self.cursorPos)
-        self.line1.set_xdata(self.posXdata)
-        self.line1.set_ydata(self.posYdata)
-        self.canvas.draw()
+        try:
+            self.line1.set_xdata(self.posXdata)
+            self.line1.set_ydata(self.posYdata)
+            self.canvas.draw()
+        except:
+            pass
         if self.cursorPos == 200:
             self.posXdata = []
             self.posYdata = []
@@ -341,9 +333,12 @@ class MainWindow(QMainWindow):
             self.ax2.set_ylim(0, max)
         except: 
             pass
-        self.line2.set_xdata(self.velXdata)
-        self.line2.set_ydata(self.velYdata)
-        self.canvas2.draw()
+        try:
+            self.line2.set_xdata(self.velXdata)
+            self.line2.set_ydata(self.velYdata)
+            self.canvas2.draw()
+        except:
+            pass
         if self.cursorVel == 200:
             self.velXdata = []
             self.velYdata = []
@@ -365,9 +360,12 @@ class MainWindow(QMainWindow):
             self.ax3.set_ylim(0,max)
         except:
             pass
-        self.line3.set_xdata(self.torXdata)
-        self.line3.set_ydata(self.torYdata)
-        self.canvas3.draw()
+        try:
+            self.line3.set_xdata(self.torXdata)
+            self.line3.set_ydata(self.torYdata)
+            self.canvas3.draw()
+        except:
+            pass
         if self.cursorTor == 200:
             self.torYdata = []
             self.torXdata = []
@@ -437,9 +435,9 @@ class MainWindow(QMainWindow):
         self.pos_timer.start(100)
         print(id)
     def limits_position(self, id):
-        max_position = self.ui.spinBox_4.value()
-        min_poisiton = self.ui.spinBox_5.value()
-        self.master.set_position_limits(id, min_poisiton, max_position)
+        min_position = self.ui.spinBox_4.value()
+        max_position = self.ui.spinBox_5.value()
+        self.master.set_position_limits(id, min_position, max_position)
     def set_velocity(self, id):
         set_point_velocity = self.ui.spinBox_6.value()
         self.master.set_velocity(id, set_point_velocity)
@@ -469,9 +467,6 @@ class MainWindow(QMainWindow):
         
     def autotuner(self, id):
         self.master.pid_tuner(id)
-        
-        
-        
     def p_position(self,id):
         p = self.ui.doubleSpinBox.value()
         self.master.set_control_parameters_position(id, p)
@@ -511,6 +506,11 @@ class MainWindow(QMainWindow):
         self.ui.pwm_slider.setValue(value* 10)
     def update_dutyCycle(self, value):
         self.ui.doubleSpinBox_10.setValue(value/10)
+        
+    def button(self, id):
+        self.master.get_button(id)
+        pass
+        
     def mousePressEvent(self, event):
         if event.buttons() == Qt.LeftButton:
             self.dragging = True
@@ -559,14 +559,14 @@ class MainWindow(QMainWindow):
 
     def find_ports(self):
         # Kullanılabilir COM portlarını bul
-        com_list = serial.tools.list_ports.comports()
-        available_coms = []
-        if len(com_list) == 0:
-            available_coms.append("None")
-        else:
-            for element in com_list:
-                available_coms.append(element.device)
-        self.ui.ports_comboBox.addItems(available_coms)
+        for port in comports():
+            self.port = port.device
+            if self.port is not None:
+                self.ui.ports_comboBox.addItem(self.port)
+                #self.timer.stop()
+            else:
+                self.ui.ports_comboBox.removeItem(self.port)
+        self.selected_port = self.ui.ports_comboBox.currentText()
 
     def start_gif(self, event):
         self.movie.start()
