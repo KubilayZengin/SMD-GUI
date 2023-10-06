@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1778</width>
+    <width>1120</width>
     <height>890</height>
    </rect>
   </property>
@@ -128,7 +128,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="../../icons/icons.qrc">
               <normaloff>:/icons/cil-menu.png</normaloff>:/icons/cil-menu.png</iconset>
             </property>
             <property name="iconSize">
@@ -154,7 +154,7 @@ background-color: rgb(98, 160, 234);
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../images/images.qrc">:/images/acromelogo_yazılı.png</pixmap>
+          <pixmap resource="images/images.qrc">:/images/acromelogo_yazılı.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -357,7 +357,7 @@ QComboBox::drop-down {
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../images/images.qrc">:/images/smd.png</pixmap>
+          <pixmap resource="images/images.qrc">:/images/smd.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -417,7 +417,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="../../icons/icons.qrc">
               <normaloff>:/icons/cil-window-minimize.png</normaloff>:/icons/cil-window-minimize.png</iconset>
             </property>
             <property name="iconSize">
@@ -448,7 +448,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="../../icons/icons.qrc">
               <normaloff>:/icons/cil-window-restore.png</normaloff>:/icons/cil-window-restore.png</iconset>
             </property>
             <property name="iconSize">
@@ -479,7 +479,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="../../icons/icons.qrc">
               <normaloff>:/icons/cil-x.png</normaloff>:/icons/cil-x.png</iconset>
             </property>
             <property name="iconSize">
@@ -508,7 +508,7 @@ background-color: rgb(98, 160, 234);
       </property>
       <property name="styleSheet">
        <string notr="true">color:white;
-background-color: rgb(165,29,45);</string>
+background-color: rgb(165, 29, 45);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -599,7 +599,7 @@ background-color: rgb(98, 160, 234);
              <string>Home</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="../../icons/icons.qrc">
               <normaloff>:/icons/cil-home.png</normaloff>:/icons/cil-home.png</iconset>
             </property>
             <property name="iconSize">
@@ -624,9 +624,6 @@ background-color: rgb(98, 160, 234);
        </item>
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -634,7 +631,7 @@ background-color: rgb(98, 160, 234);
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="scanPage">
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -734,7 +731,7 @@ background-color: rgb(98, 160, 234);
                     <string>Scan Ports</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../images/images.qrc">
+                    <iconset resource="images/images.qrc">
                      <normaloff>:/images/scanning-device.png</normaloff>:/images/scanning-device.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -1105,7 +1102,7 @@ border-image: url(:/images/ScanClicked.png)
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="../images/images.qrc">:/images/resize_window.png</pixmap>
+                 <pixmap resource="images/images.qrc">:/images/resize_window.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -1121,145 +1118,81 @@ border-image: url(:/images/ScanClicked.png)
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QWidget" name="smd_widget" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_26">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QWidget" name="smd_left_widget" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <layout class="QVBoxLayout" name="verticalLayout_26">
                  <item>
-                  <spacer name="horizontalSpacer_4">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignRight">
+               <widget class="QWidget" name="smd_right_widget" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
-                  <widget class="QWidget" name="widget_8" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>250</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="sizeIncrement">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_21">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_14">
-                      <item>
-                       <widget class="QLabel" name="label_3">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">image: url(:/images/smd master vdd.png);</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                   <widget class="QWidget" name="smd_right_top_widget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="sizeIncrement">
-                    <size>
-                     <width>50</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_5">
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>6</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>6</number>
-                    </property>
-                    <item row="0" column="1">
-                     <widget class="QComboBox" name="smd_comboBox">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
+                   <layout class="QGridLayout" name="gridLayout_10">
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="smd_id_lineEdit"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="smd_id_label">
+                      <property name="text">
+                       <string>SMD ID:</string>
                       </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QPushButton" name="smd_apply_button">
                       <property name="minimumSize">
                        <size>
-                        <width>150</width>
+                        <width>0</width>
                         <height>25</height>
                        </size>
                       </property>
-                      <property name="maximumSize">
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Apply</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="smd_baudrate_label">
+                      <property name="text">
+                       <string>Baudrate</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QComboBox" name="smd_comboBox">
+                      <property name="minimumSize">
                        <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
+                        <width>0</width>
+                        <height>25</height>
                        </size>
                       </property>
                       <property name="cursor">
@@ -1299,91 +1232,25 @@ background-color: rgb(98, 160, 234);
                       </item>
                      </widget>
                     </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="smd_baudrate_label">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="smd_right_bottom_widget" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_14">
+                    <item>
+                     <widget class="QLabel" name="smd_info_label">
                       <property name="text">
-                       <string>Baudrate</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="smd_id_label">
-                      <property name="text">
-                       <string>SMD ID:</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="smd_id_lineEdit">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QPushButton" name="smd_apply_button">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton {
-background-color: rgb(111, 11, 11);
-border-radius: 3px;
-}
-QPushButton:hover {
-background-color: rgb(26, 95, 180);
-}
-QPushButton:pressed {
-background-color: rgb(98, 160, 234);
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Apply</string>
+                       <string>Actuators' default baudrate is 115200.
+To change the baudrate value, it must first disable the torque.</string>
                       </property>
                      </widget>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item>
-                  <spacer name="horizontalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
                 </layout>
                </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_7" native="true"/>
               </item>
              </layout>
             </widget>
@@ -1413,7 +1280,7 @@ background-color: rgb(111, 11, 11);
 </string>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="configuration_tab">
               <property name="cursor">
@@ -1580,7 +1447,8 @@ background-color: rgb(98, 160, 234);
                <item>
                 <widget class="QFrame" name="frame">
                  <property name="styleSheet">
-                  <string notr="true"/>
+                  <string notr="true">
+</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -1849,7 +1717,7 @@ background-color: rgb(98, 160, 234);
                               </widget>
                              </item>
                              <item>
-                              <widget class="QSpinBox" name="velocity_maxvelocity_spinbox"/>
+                              <widget class="QSpinBox" name="velocity_minvelocity_spinbox"/>
                              </item>
                             </layout>
                            </widget>
@@ -2246,55 +2114,6 @@ background-color: rgb(98, 160, 234);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page">
-          <layout class="QVBoxLayout" name="verticalLayout_31">
-           <item>
-            <widget class="QFrame" name="frame_5">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_32">
-              <item>
-               <widget class="QWidget" name="widget_6" native="true">
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>200</height>
-                 </size>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_34">
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>../images/ezgif.com-gif-maker (8).gif</pixmap>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_33">
-                   <item>
-                    <widget class="QDialogButtonBox" name="buttonBox">
-                     <property name="standardButtons">
-                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
         </widget>
        </item>
       </layout>
@@ -2304,8 +2123,9 @@ background-color: rgb(98, 160, 234);
   </widget>
  </widget>
  <resources>
-  <include location="../images/images.qrc"/>
-  <include location="../../../icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
+  <include location="../../icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
  </resources>
  <connections/>
 </ui>

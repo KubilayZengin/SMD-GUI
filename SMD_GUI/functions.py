@@ -20,18 +20,20 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.animation import FuncAnimation
 from datetime import datetime
 from matplotlib.figure import Figure
+from motorPopUp import Ui_Form
+
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         
         self.movie = QMovie("images/gif.gif")
-        self.ui.gif_label.setMovie(self.movie)
+        #self.ui.gif_label.setMovie(self.movie)
         self.ui.scan_button.enterEvent = self.start_gif
         self.ui.scan_ports_button.clicked.connect(self.find_ports)
 
@@ -39,7 +41,7 @@ class MainWindow(QMainWindow):
         self.ui.minimizeButton.clicked.connect(lambda: self.showMinimized())
         self.ui.restoreButton.clicked.connect(lambda: self.restore_or_maximize_window())
         self.ui.closeButton.clicked.connect(lambda: self.close())
-
+        movie = QMovie("Documents/pythonWorkspace/SMD-GUI/images/ezgif.com-gif-maker (8).gif")
         # Tree büyüme küçülme animasyon ataması
         self.ui.open_tree_Button.clicked.connect(self.slideTreeMenu)
 
@@ -56,7 +58,7 @@ class MainWindow(QMainWindow):
         self.resize_start_pos = None
         self.resize_start_geometry = None
         
-        self.ui.widget_4.hide()
+        #self.ui.widget_4.hide()
         self.ui.menubar_frame.hide()
         self.current_id = 0
         #self.ui.actionSave_as.triggered.connect(self.save_as)
@@ -74,57 +76,60 @@ class MainWindow(QMainWindow):
         self.tor_timer = QTimer(self)
         self.tor_timer.timeout.connect(lambda: self.plot_torque(int(self.current_id)))
         
-        self.ui.ports_comboBox.activated.connect(self.activatedComboBox)
-        self.ui.lineEdit_4.returnPressed.connect(self.update_id)
+        self.ui.scan_ports_comboBox.activated.connect(self.activatedComboBox)
+        #self.ui.lineEdit_4.returnPressed.connect(self.update_id)
         
         #self.ui.comboBox_3.activated.connect(lambda : self.configuration_operation(int(self.current_id)))
-        self.ui.pushButton_3.clicked.connect(lambda : self.torque_enable(int(self.current_id)))
+        #self.ui.pushButton_3.clicked.connect(lambda : self.torque_enable(int(self.current_id)))
         
-        self.ui.tabWidget.tabBarClicked.connect(self.set_operation)
+        self.ui.motor_tabWidget.tabBarClicked.connect(self.set_operation)
         #set position-velocity-torque
-        self.ui.spinBox_3.editingFinished.connect(lambda: self.set_position(int(self.current_id)))
-        self.ui.spinBox_6.editingFinished.connect(lambda: self.set_velocity(int(self.current_id)))
-        self.ui.spinBox_9.editingFinished.connect(lambda: self.set_torque(int(self.current_id)))
+        self.ui.position_setpoint_Spinbox.editingFinished.connect(lambda: self.set_position(int(self.current_id)))
+        self.ui.velocity_setpoint_spinbox.editingFinished.connect(lambda: self.set_velocity(int(self.current_id)))
+        self.ui.torque_setpoint_spinBox.editingFinished.connect(lambda: self.set_torque(int(self.current_id)))
         #cpr and rpm 
-        self.ui.spinBox.editingFinished.connect(lambda : self.cpr(int(self.current_id)))
-        self.ui.spinBox_2.editingFinished.connect(lambda: self.rpm(int(self.current_id)))
-        self.ui.pushButton.clicked.connect(lambda: self.autotuner(int(self.current_id)))
+        self.ui.configuration_cpr_spinBox.editingFinished.connect(lambda : self.cpr(int(self.current_id)))
+        self.ui.configuration_rpm_spinBox.editingFinished.connect(lambda: self.rpm(int(self.current_id)))
+        #self.ui.configuration_autotune_pushButton.clicked.connect(lambda: self.autotuner(int(self.current_id)))
         #position pid
-        self.ui.doubleSpinBox.editingFinished.connect(lambda: self.p_position(int(self.current_id)))
-        self.ui.doubleSpinBox_2.editingFinished.connect(lambda: self.i_position(int(self.current_id)))
-        self.ui.doubleSpinBox_3.editingFinished.connect(lambda: self.d_position(int(self.current_id)))
+        self.ui.position_P_doubleSpinBox.editingFinished.connect(lambda: self.p_position(int(self.current_id)))
+        self.ui.position_I_doubleSpinBox.editingFinished.connect(lambda: self.i_position(int(self.current_id)))
+        self.ui.position_D_doubleSpinBox.editingFinished.connect(lambda: self.d_position(int(self.current_id)))
         #velocity pid
-        self.ui.doubleSpinBox_5.editingFinished.connect(lambda: self.p_velocity(int(self.current_id)))
-        self.ui.doubleSpinBox_4.editingFinished.connect(lambda: self.i_velocity(int(self.current_id)))
-        self.ui.doubleSpinBox_6.editingFinished.connect(lambda: self.d_velocity(int(self.current_id)))
+        self.ui.velocty_P_doubleSpinBox.editingFinished.connect(lambda: self.p_velocity(int(self.current_id)))
+        self.ui.velocty_I_doubleSpinBox.editingFinished.connect(lambda: self.i_velocity(int(self.current_id)))
+        self.ui.velocty_D_doubleSpinBox.editingFinished.connect(lambda: self.d_velocity(int(self.current_id)))
         #torque pid
-        self.ui.doubleSpinBox_8.editingFinished.connect(lambda: self.p_torque(int(self.current_id)))
-        self.ui.doubleSpinBox_7.editingFinished.connect(lambda: self.i_torque(int(self.current_id)))
-        self.ui.doubleSpinBox_9.editingFinished.connect(lambda: self.d_torque(int(self.current_id)))
+        self.ui.torque_P_doubleSpinBox.editingFinished.connect(lambda: self.p_torque(int(self.current_id)))
+        self.ui.torque_I_doubleSpinBox.editingFinished.connect(lambda: self.i_torque(int(self.current_id)))
+        self.ui.torque_D_doubleSpinBox.editingFinished.connect(lambda: self.d_torque(int(self.current_id)))
         # set pwm
-        self.ui.doubleSpinBox_10.editingFinished.connect(lambda: self.pwm(int(self.current_id)))
-        self.ui.doubleSpinBox_10.editingFinished.connect(self.update_slider)
+        self.ui.pwn_dutycycle_spinBox.editingFinished.connect(lambda: self.pwm(int(self.current_id)))
+        self.ui.pwn_dutycycle_spinBox.editingFinished.connect(self.update_slider)
         self.ui.pwm_slider.valueChanged.connect(self.update_dutyCycle)
         self.ui.pwm_slider.valueChanged.connect(lambda: self.pwm(int(self.current_id)))
         #limits
-        self.ui.spinBox_4.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
-        self.ui.spinBox_5.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
-        self.ui.spinBox_7.editingFinished.connect(lambda : self.limits_velocity(int(self.current_id)))
-        self.ui.spinBox_10.editingFinished.connect(lambda : self.limit_torque(int(self.current_id)))
+        self.ui.position_maxposition_spinbox.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
+        self.ui.position_minposition_spinBox.editingFinished.connect(lambda: self.limits_position(int(self.current_id)))
+        self.ui.maxVelocity_spinbox.editingFinished.connect(lambda: self.limits_velocity(int(self.current_id)))
+        self.ui.velocity_maxvelocity_spinbox.editingFinished.connect(lambda: self.limits_velocity(int(self.current_id)))
+        self.ui.minTorque_sppinbox.editingFinished.connect(lambda: self.limit_torque(int(self.current_id)))
+        self.ui.torque_maxtorque_spinBox.editingFinished.connect(lambda : self.limit_torque(int(self.current_id)))
         #firmware update
-        self.ui.lineEdit_4.returnPressed.connect(self.driver_info)
+        self.ui.configuration_autotune_pushButton.clicked.connect(lambda: self.show_popUp(int(self.current_id)))
+        self.ui.buttonBox.rejected.connect(self.closePopUp)
         # page changed
         self.ui.treeWidget.itemClicked.connect(self.motor_page)
         self.ui.homeButton.clicked.connect(self.turn_scan_page)
         self.ui.treeWidget.itemClicked.connect(self.control_page)
         
-        self.checkBoxes = [self.ui.checkBox, self.ui.checkBox_2, self.ui.checkBox_3, 
-                           self.ui.checkBox_4, self.ui.checkBox_5, self.ui.checkBox_6]
+        self.checkBoxes = [self.ui.scan_checkBox_1, self.ui.scan_checkBox_2, self.ui.scan_checkBox_3, 
+                           self.ui.scan_checkBox_4, self.ui.scan_checkBox_5, self.ui.scan_checkBox_6]
         #scan 
         self.ui.scan_button.clicked.connect(self.scan_smd)
         #plot position
         self.canvas = FigureCanvas(Figure())
-        self.canvas.setParent(self.ui.frame)
+        self.canvas.setParent(self.ui.frame_2)
         self.ax = self.canvas.figure.add_subplot(111)
         self.ax.set_xlim(0, 20)
         self.ax.set_ylim(0, 10000)
@@ -134,7 +139,7 @@ class MainWindow(QMainWindow):
         self.line1, = self.ax.plot(self.posXdata, self.posYdata)
         #plot velocity
         self.canvas2 = FigureCanvas(Figure())
-        self.canvas2.setParent(self.ui.frame_2)
+        self.canvas2.setParent(self.ui.velocity_right_frame)
         self.ax2 = self.canvas2.figure.add_subplot(111)
         self.ax2.set_xlim(0, 20)
         self.ax2.set_ylim(0, 100)
@@ -144,7 +149,7 @@ class MainWindow(QMainWindow):
         self.line2, = self.ax2.plot(self.velXdata, self.velYdata)
         #plot torque
         self.canvas3 = FigureCanvas(Figure())
-        self.canvas3.setParent(self.ui.frame_3)
+        self.canvas3.setParent(self.ui.torque_right_frame)
         self.ax3 = self.canvas3.figure.add_subplot(111)
         self.ax3.set_xlim(0, 20)
         self.ax3.set_ylim(0, 250)
@@ -183,16 +188,16 @@ class MainWindow(QMainWindow):
         for port in comports():
             self.port = port.device
             if self.port is not None:
-                self.ui.ports_comboBox.addItem(self.port)
+                self.ui.scan_ports_comboBox.addItem(self.port)
                 self.timer.stop()
             else:
-                self.ui.ports_comboBox.removeItem(self.port)
+                self.ui.scan_ports_comboBox.removeItem(self.port)
     def turn_scan_page(self):
         self.ui.treeWidget.clear()
         self.smd_id.clear()
         self.ui.stackedWidget.setCurrentIndex(0)
     def activatedComboBox(self):
-        self.selected_port = self.ui.ports_comboBox.currentText()
+        self.selected_port = self.ui.scan_ports_comboBox.currentText()
                 
     def scan_smd(self):
         self.ui.scan_button.setStyleSheet("border-image: url(:/newPrefix/ScanClicked.png);")
@@ -205,16 +210,17 @@ class MainWindow(QMainWindow):
             self.smd_id = self.smd_id + self.master.attached()
             print(self.smd_id)
         if not self.smd_id:
-            self.ui.widget_4.show()
-            self.ui.label_2.setText("smd bulunamadı")
+            #self.ui.widget_4.show()
+            #self.ui.label_2.setText("smd bulunamadı")
+            pass
         else:
             try:
-                self.ui.widget_4.show()
+                #self.ui.widget_4.show()
                 self.ui.menubar_frame.show()
                 self.sensor_scan()
-                self.ui.label_2.setText("scanned")
+                #self.ui.label_2.setText("scanned")
             except:
-                self.ui.label_2.setText("sensor bulunamadı")
+                #self.ui.label_2.setText("sensor bulunamadı")
                 self.ui.menubar_frame.show()
             
     def sensor_scan(self):
@@ -252,24 +258,23 @@ class MainWindow(QMainWindow):
             current_index = self.ui.stackedWidget.currentIndex()
             self.ui.stackedWidget.setCurrentIndex(2)
             data = self.master.get_variables(int(self.current_id), [Index.OutputShaftCPR, Index.OutputShaftRPM, Index.TorqueEnable, Index.MinimumPositionLimit, Index.MaximumPositionLimit, Index.TorqueLimit, Index.VelocityLimit])
-            self.ui.spinBox.setValue(data[0])
-            self.ui.spinBox_2.setValue(data[1])
-            self.ui.spinBox_4.setValue(data[3])
-            self.ui.spinBox_5.setValue(data[4])
-            self.ui.spinBox_7.setValue(data[6])
-            self.ui.spinBox_10.setValue(data[5])
+            self.ui.configuration_cpr_spinBox.setValue(data[0])
+            self.ui.configuration_rpm_spinBox.setValue(data[1])
+            self.ui.position_minposition_spinBox.setValue(data[3])
+            self.ui.position_maxposition_spinbox.setValue(data[4])
+            self.ui.torque_maxtorque_spinBox.setValue(data[6])
+            self.ui.velocity_maxvelocity_spinbox.setValue(data[5])
         else:
             current_index = self.ui.stackedWidget.currentIndex()
             self.ui.stackedWidget.setCurrentIndex(1)
         
     def driver_info(self):
-        id = self.ui.lineEdit_4.text()
+        #id = self.ui.lineEdit_4.text()
         text = self.master.get_driver_info(int(id))
-        self.ui.label_3.setText(str(text))
-    
+        #self.ui.label_3.setText(str(text))
     def update_id(self):
-        baudrate = self.ui.comboBox.currentText()
-        text = self.ui.lineEdit_4.text()
+        baudrate = self.ui.smd_comboBox.currentText()
+        text = self.ui.smd_id_lineEdit.text()
         selected_item = self.ui.treeWidget.currentItem()
         current_id = selected_item.text(0)[-1]
         print(current_id)
@@ -278,7 +283,13 @@ class MainWindow(QMainWindow):
             selected_item.setText(0, f"SMD ID: {text}")
             #self.master.update_driver_baudrate(int(current_id), int(baudrate))
             self.master.update_driver_id(int(current_id), int(new_id))
-            
+    def show_popUp(self, id):
+        self.ui.stackedWidget.setCurrentIndex(4)
+        self.ui.buttonBox.accepted.connect(self.autotuner(id))
+        
+    def closePopUp(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+        
     def motor_page(self, item, column):
         parent_item = item.parent()
         if parent_item is not None:
@@ -291,13 +302,13 @@ class MainWindow(QMainWindow):
     def plot_position(self, id):
         self.cursorPos += 1        
         text = self.master.get_position(id)
-        self.ui.lineEdit.setText(str(text))
+        self.ui.position_lineEdit.setText(str(text))
         if self.line1 is None:
             self.line1, = self.ax.plot(self.posXdata, self.posYdata)
         # x ve y ekseni sınırlarını ayarlayabil20irsiniz
         
-        min = self.ui.spinBox_4.value()
-        max = self.ui.spinBox_5.value()
+        min = self.ui.position_minposition_spinBox.value()
+        max = self.ui.position_maxposition_spinbox.value()
         try:
             self.ax.set_ylim(min, max)
         except:
@@ -323,12 +334,12 @@ class MainWindow(QMainWindow):
         self.cursorVel += 1
         text = self.master.get_velocity(id)
         data = list(map(int, text))
-        self.ui.lineEdit_2.setText(str(text))
+        self.ui.velocity_presentposition_lineEdit.setText(str(text))
         if self.line2 is None:
             self.line2, = self.ax2.plot(self.velXdata, self.velYdata)
         self.velXdata.append(self.cursorVel * 0.1)
         self.velYdata.extend(data)
-        max = self.ui.spinBox_7.value()
+        max = self.ui.velocity_maxvelocity_spinbox.value()
         try: 
             self.ax2.set_ylim(0, max)
         except: 
@@ -349,13 +360,13 @@ class MainWindow(QMainWindow):
     def plot_torque(self, id):
         self.cursorTor += 1
         text = self.master.get_torque(id)
-        self.ui.lineEdit_3.setText(str(text))
+        self.ui.torque_presentposition_lineEdit.setText(str(text))
         data = list(map(int, text))
         if self.line3 is None:
             self.line3, = self.ax3.plot(self.torXdata, self.torYdata)
         self.torXdata.append(self.cursorTor * 0.1)
         self.torYdata.extend(data)
-        max = self.ui.spinBox_10.value()
+        max = self.ui.torque_maxtorque_spinBox.value()
         try:
             self.ax3.set_ylim(0,max)
         except:
@@ -372,25 +383,13 @@ class MainWindow(QMainWindow):
             self.cursorTor = 0
             self.line3.remove()
             self.line3 = None
-            
-    def configuration_operation(self, id):
-        self.operation_mode = self.ui.comboBox_3.currentText()
-        print(self.operation_mode) 
-        for mode in self.operation_modes:
-            if self.operation_mode == mode:
-                print(self.master.set_operation_mode(id, self.operation_modes[mode]))
-    def torque_enable(self, id):
-        self.torque_enabled = not self.torque_enabled
-        if self.torque_enabled:
-            self.master.enable_torque(id, True)
-        else:
-            self.master.enable_torque(id, False)
+
     def cpr(self, id):
-        cpr = self.ui.spinBox.value()
+        cpr = self.ui.configuration_cpr_spinBox.value()
         self.master.set_shaft_cpr(id, cpr)
 
     def rpm(self, id):
-        rpm = self.ui.spinBox_2.value()
+        rpm = self.ui.configuration_rpm_spinBox.value()
         self.master.set_shaft_rpm(id, rpm)
     
     def set_operation(self, index):
@@ -399,24 +398,24 @@ class MainWindow(QMainWindow):
             self.master.set_operation_mode(id, 1)
             pid_p = []
             pid_p = self.master.get_control_parameters_position(id)
-            self.ui.doubleSpinBox.setValue(pid_p[0])
-            self.ui.doubleSpinBox_2.setValue(pid_p[1])
-            self.ui.doubleSpinBox_3.setValue(pid_p[2])
+            self.ui.position_P_doubleSpinBox.setValue(pid_p[0])
+            self.ui.position_I_doubleSpinBox.setValue(pid_p[1])
+            self.ui.position_D_doubleSpinBox.setValue(pid_p[2])
         elif index == 2:
             self.master.set_operation_mode(id, 2)
             pid_v = []
             pid_v = self.master.get_control_parameters_velocity(id)
-            self.ui.doubleSpinBox_5.setValue(pid_v[0])
-            self.ui.doubleSpinBox_4.setValue(pid_v[1])
-            self.ui.doubleSpinBox_6.setValue(pid_v[2])
+            self.ui.velocty_P_doubleSpinBox.setValue(pid_v[0])
+            self.ui.velocty_I_doubleSpinBox.setValue(pid_v[1])
+            self.ui.velocty_D_doubleSpinBox.setValue(pid_v[2])
             
         elif index == 3:
             self.master.set_operation_mode(id, 3)
             pid_t = []
             pid_t = self.master.get_control_parameters_torque(id)
-            self.ui.doubleSpinBox_8.setValue(pid_t[0])
-            self.ui.doubleSpinBox_7.setValue(pid_t[1])
-            self.ui.doubleSpinBox_9.setValue(pid_t[2])
+            self.ui.torque_P_doubleSpinBox.setValue(pid_t[0])
+            self.ui.torque_I_doubleSpinBox.setValue(pid_t[1])
+            self.ui.torque_D_doubleSpinBox.setValue(pid_t[2])
         elif index == 4:
             self.master.set_operation_mode(id, 0)
         
@@ -429,83 +428,84 @@ class MainWindow(QMainWindow):
     def set_pwm(self, id):
         self.master.set_operation_mode(id, 0)
     def set_position(self, id):
-        set_point_position = self.ui.spinBox_3.value()
+        set_point_position = self.ui.position_setpoint_Spinbox.value()
         print(set_point_position)
         self.master.set_position(id, int(set_point_position))
         self.pos_timer.start(100)
         print(id)
     def limits_position(self, id):
-        min_position = self.ui.spinBox_4.value()
-        max_position = self.ui.spinBox_5.value()
+        min_position = self.ui.position_minposition_spinBox.value()
+        max_position = self.ui.position_maxposition_spinbox.value()
         self.master.set_position_limits(id, min_position, max_position)
     def set_velocity(self, id):
-        set_point_velocity = self.ui.spinBox_6.value()
+        set_point_velocity = self.ui.velocity_setpoint_spinbox.value()
         self.master.set_velocity(id, set_point_velocity)
         self.vel_timer.start(100)
         
     def limits_velocity(self, id):
-        limit = self.ui.spinBox_7.value()
+        limit = self.ui.maxVelocity_spinbox.value()
         self.master.set_velocity_limit(id, limit)
     def set_torque(self, id):
-        set_point_torque = self.ui.spinBox_9.value()
+        set_point_torque = self.ui.torque_setpoint_spinBox.value()
         self.master.set_torque(id, set_point_torque)
         self.tor_timer.start(100)
     def limit_torque(self, id):
-        limit = self.ui.spinBox_10.value()
+        limit = self.ui.torque_maxtorque_spinBox.value()
         self.master.set_torque_limit(id, limit)
 
     def get_position(self, id):
         text = str(self.master.get_position(id))
-        self.ui.lineEdit.setText(text)
+        self.ui.position_lineEdit.setText(text)
         self.plot(text)
         
     def get_velocity(self, id):
-        self.ui.lineEdit_2.setText(str(self.master.get_velocity(id)))
+        self.ui.velocity_presentposition_lineEdit.setText(str(self.master.get_velocity(id)))
         
     def get_torque(self, id):
-        self.ui.lineEdit_3.setText(str(self.master.get_torque(id)))
+        self.ui.torque_presentposition_lineEdit.setText(str(self.master.get_torque(id)))
         
     def autotuner(self, id):
+        self.ui.stackedWidget.setCurrentIndex(2)
         self.master.pid_tuner(id)
     def p_position(self,id):
-        p = self.ui.doubleSpinBox.value()
+        p = self.ui.position_P_doubleSpinBox.value()
         self.master.set_control_parameters_position(id, p)
     def i_position(self, id):
-        i = self.ui.doubleSpinBox_2.value()
+        i = self.ui.position_I_doubleSpinBox.value()
         self.master.set_control_parameters_position(id, i)
     def d_position(self, id):
-        d = self.ui.doubleSpinBox_3.value()
+        d = self.ui.position_D_doubleSpinBox.value()
         self.master.set_control_parameters_position(id, d)
         
     def p_velocity(self, id):
-        p = self.ui.doubleSpinBox_5.value()
+        p = self.ui.velocty_P_doubleSpinBox.value()
         self.master.set_control_parameters_velocity(id, p)
     def i_velocity(self, id):
-        i = self.ui.doubleSpinBox_4.value()
+        i = self.ui.velocty_I_doubleSpinBox.value()
         self.master.set_control_parameters_velocity(id, i)
     def d_velocity(self, id):
-        d = self.ui.doubleSpinBox_6.value()
+        d = self.ui.velocty_D_doubleSpinBox.value()
         self.master.set_control_parameters_velocity(id, d)
         
     def p_torque(self, id):
-        p = self.ui.doubleSpinBox_8.value()
+        p = self.ui.torque_P_doubleSpinBox.value()
         self.master.set_control_parameters_torque(id, p)
     def i_torque(self, id):
-        i = self.ui.doubleSpinBox_7.value()
+        i = self.ui.torque_I_doubleSpinBox.value()
         self.master.set_control_parameters_torque(id, i)
     def d_torque(self, id):
-        d = self.ui.doubleSpinBox_9.value()
+        d = self.ui.torque_D_doubleSpinBox.value()
         self.master.set_control_parameters_torque(id, d)
         
     def pwm(self, id):
-        duty_cycle = self.ui.doubleSpinBox_10.value()
+        duty_cycle = self.ui.pwn_dutycycle_spinBox.value()
         self.master.set_duty_cycle(id, duty_cycle)
         
     def update_slider(self):
-        value = self.ui.doubleSpinBox_10.value()
+        value = self.ui.pwn_dutycycle_spinBox.value()
         self.ui.pwm_slider.setValue(value* 10)
     def update_dutyCycle(self, value):
-        self.ui.doubleSpinBox_10.setValue(value/10)
+        self.ui.pwn_dutycycle_spinBox.setValue(value/10)
         
     def button(self, id):
         self.master.get_button(id)
@@ -562,17 +562,17 @@ class MainWindow(QMainWindow):
         for port in comports():
             self.port = port.device
             if self.port is not None:
-                self.ui.ports_comboBox.addItem(self.port)
+                self.ui.scan_ports_comboBox.addItem(self.port)
                 #self.timer.stop()
             else:
-                self.ui.ports_comboBox.removeItem(self.port)
-        self.selected_port = self.ui.ports_comboBox.currentText()
+                self.ui.scan_ports_comboBox.removeItem(self.port)
+        self.selected_port = self.ui.scan_ports_comboBox.currentText()
 
     def start_gif(self, event):
         self.movie.start()
 
     def restore_or_maximize_window(self):
-        global window_size  # Default değer 0
+        window_size = 0# Default değer 0
         win_status = window_size
 
         if win_status == 0:

@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="images">
+    <file>smd master vdd.png</file>
+    <file>smd master v2.bip.185.png</file>
+    <file>on-button.png</file>
+    <file>off-button.png</file>
+    <file>scanning-device-white.png</file>
+    <file>button.png</file>
+    <file>usb.png</file>
+    <file>resize_window.png</file>
+    <file>scanning-device.png</file>
+    <file>ScanClicked.png</file>
+    <file>smd.png</file>
+    <file>Scan.png</file>
+    <file>acromelogo_yazılı.png</file>
+  </qresource>
+</RCC>

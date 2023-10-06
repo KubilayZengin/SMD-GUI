@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1778</width>
-    <height>890</height>
+    <width>1499</width>
+    <height>908</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -128,7 +128,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="icons/icons.qrc">
               <normaloff>:/icons/cil-menu.png</normaloff>:/icons/cil-menu.png</iconset>
             </property>
             <property name="iconSize">
@@ -154,7 +154,7 @@ background-color: rgb(98, 160, 234);
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../images/images.qrc">:/images/acromelogo_yazılı.png</pixmap>
+          <pixmap resource="images/images.qrc">:/images/acromelogo_yazılı.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -217,14 +217,9 @@ background-color: rgb(28, 113, 216);
 }
 QComboBox:pressed {
 background-color: rgb(28, 113, 216);
-}
-QComboBox::down-arrow { image: none; }
-QComboBox::drop-down {
-    width: 0px;
-}
-</string>
+}</string>
             </property>
-            <property name="placeholderText" stdset="0">
+            <property name="placeholderText">
              <string>File</string>
             </property>
             <item>
@@ -290,13 +285,9 @@ background-color: rgb(28, 113, 216);
 }
 QComboBox:pressed {
 background-color: rgb(28, 113, 216);
-}
-QComboBox::drop-down {
-    width: 0px;
-}
-</string>
+}</string>
             </property>
-            <property name="placeholderText" stdset="0">
+            <property name="placeholderText">
              <string>Help</string>
             </property>
             <item>
@@ -357,7 +348,7 @@ QComboBox::drop-down {
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../images/images.qrc">:/images/smd.png</pixmap>
+          <pixmap resource="images/images.qrc">:/images/smd.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -417,7 +408,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="icons/icons.qrc">
               <normaloff>:/icons/cil-window-minimize.png</normaloff>:/icons/cil-window-minimize.png</iconset>
             </property>
             <property name="iconSize">
@@ -448,7 +439,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="icons/icons.qrc">
               <normaloff>:/icons/cil-window-restore.png</normaloff>:/icons/cil-window-restore.png</iconset>
             </property>
             <property name="iconSize">
@@ -479,7 +470,7 @@ background-color: rgb(98, 160, 234);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="icons/icons.qrc">
               <normaloff>:/icons/cil-x.png</normaloff>:/icons/cil-x.png</iconset>
             </property>
             <property name="iconSize">
@@ -508,7 +499,7 @@ background-color: rgb(98, 160, 234);
       </property>
       <property name="styleSheet">
        <string notr="true">color:white;
-background-color: rgb(165,29,45);</string>
+background-color: rgb(165, 29, 45);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -599,7 +590,7 @@ background-color: rgb(98, 160, 234);
              <string>Home</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../icons/icons.qrc">
+             <iconset resource="icons/icons.qrc">
               <normaloff>:/icons/cil-home.png</normaloff>:/icons/cil-home.png</iconset>
             </property>
             <property name="iconSize">
@@ -624,9 +615,6 @@ background-color: rgb(98, 160, 234);
        </item>
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -634,7 +622,7 @@ background-color: rgb(98, 160, 234);
           <enum>QFrame::Raised</enum>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="scanPage">
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -657,9 +645,6 @@ background-color: rgb(98, 160, 234);
                <width>16777215</width>
                <height>16777215</height>
               </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">gridline-color: rgb(238, 238, 236);</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::Box</enum>
@@ -734,7 +719,7 @@ background-color: rgb(98, 160, 234);
                     <string>Scan Ports</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../images/images.qrc">
+                    <iconset resource="images/images.qrc">
                      <normaloff>:/images/scanning-device.png</normaloff>:/images/scanning-device.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -828,9 +813,6 @@ background-color: rgb(28, 113, 216);
                <height>16777215</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true">gridline-color: rgb(238, 238, 236);</string>
-             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
@@ -864,26 +846,6 @@ background-color: rgb(28, 113, 216);
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="scan_checkBox_6">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>115200</string>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="1">
                <widget class="QCheckBox" name="scan_checkBox_5">
                 <property name="font">
@@ -898,8 +860,8 @@ background-color: rgb(28, 113, 216);
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" rowspan="2">
-               <widget class="QCheckBox" name="scan_checkBox_2">
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="scan_checkBox_4">
                 <property name="font">
                  <font>
                   <pointsize>14</pointsize>
@@ -908,7 +870,7 @@ background-color: rgb(28, 113, 216);
                  </font>
                 </property>
                 <property name="text">
-                 <string>9600</string>
+                 <string>19200</string>
                 </property>
                </widget>
               </item>
@@ -955,8 +917,14 @@ background-color: rgb(28, 113, 216);
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="scan_checkBox_4">
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="scan_checkBox_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>14</pointsize>
@@ -965,7 +933,21 @@ background-color: rgb(28, 113, 216);
                  </font>
                 </property>
                 <property name="text">
-                 <string>19200</string>
+                 <string>115200</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="2">
+               <widget class="QCheckBox" name="scan_checkBox_2">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>9600</string>
                 </property>
                </widget>
               </item>
@@ -1105,7 +1087,7 @@ border-image: url(:/images/ScanClicked.png)
                  <string/>
                 </property>
                 <property name="pixmap">
-                 <pixmap resource="../images/images.qrc">:/images/resize_window.png</pixmap>
+                 <pixmap resource="images/images.qrc">:/images/resize_window.png</pixmap>
                 </property>
                 <property name="scaledContents">
                  <bool>true</bool>
@@ -1121,145 +1103,81 @@ border-image: url(:/images/ScanClicked.png)
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QWidget" name="smd_widget" native="true">
-             <layout class="QVBoxLayout" name="verticalLayout_26">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QWidget" name="smd_left_widget" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <layout class="QVBoxLayout" name="verticalLayout_26">
                  <item>
-                  <spacer name="horizontalSpacer_4">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignRight">
+               <widget class="QWidget" name="smd_right_widget" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
-                  <widget class="QWidget" name="widget_8" native="true">
-                   <property name="minimumSize">
-                    <size>
-                     <width>250</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="sizeIncrement">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_21">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_14">
-                      <item>
-                       <widget class="QLabel" name="label_3">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">image: url(:/images/smd master vdd.png);</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                   <widget class="QWidget" name="smd_right_top_widget" native="true">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="sizeIncrement">
-                    <size>
-                     <width>50</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_5">
-                    <property name="leftMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>9</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>6</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>6</number>
-                    </property>
-                    <item row="0" column="1">
-                     <widget class="QComboBox" name="smd_comboBox">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
+                   <layout class="QGridLayout" name="gridLayout_10">
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="smd_id_lineEdit"/>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="smd_id_label">
+                      <property name="text">
+                       <string>SMD ID:</string>
                       </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QPushButton" name="smd_apply_button">
                       <property name="minimumSize">
                        <size>
-                        <width>150</width>
+                        <width>0</width>
                         <height>25</height>
                        </size>
                       </property>
-                      <property name="maximumSize">
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Apply</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="smd_baudrate_label">
+                      <property name="text">
+                       <string>Baudrate</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QComboBox" name="smd_comboBox">
+                      <property name="minimumSize">
                        <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
+                        <width>0</width>
+                        <height>25</height>
                        </size>
                       </property>
                       <property name="cursor">
@@ -1299,91 +1217,25 @@ background-color: rgb(98, 160, 234);
                       </item>
                      </widget>
                     </item>
-                    <item row="0" column="0">
-                     <widget class="QLabel" name="smd_baudrate_label">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="smd_right_bottom_widget" native="true">
+                   <layout class="QVBoxLayout" name="verticalLayout_14">
+                    <item>
+                     <widget class="QLabel" name="smd_info_label">
                       <property name="text">
-                       <string>Baudrate</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="smd_id_label">
-                      <property name="text">
-                       <string>SMD ID:</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLineEdit" name="smd_id_lineEdit">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QPushButton" name="smd_apply_button">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>25</height>
-                       </size>
-                      </property>
-                      <property name="cursor">
-                       <cursorShape>PointingHandCursor</cursorShape>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton {
-background-color: rgb(111, 11, 11);
-border-radius: 3px;
-}
-QPushButton:hover {
-background-color: rgb(26, 95, 180);
-}
-QPushButton:pressed {
-background-color: rgb(98, 160, 234);
-}</string>
-                      </property>
-                      <property name="text">
-                       <string>Apply</string>
+                       <string>Actuators' default baudrate is 115200.
+To change the baudrate value, it must first disable the torque.</string>
                       </property>
                      </widget>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item>
-                  <spacer name="horizontalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
                 </layout>
                </widget>
-              </item>
-              <item>
-               <widget class="QWidget" name="widget_7" native="true"/>
               </item>
              </layout>
             </widget>
@@ -1413,7 +1265,7 @@ background-color: rgb(111, 11, 11);
 </string>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="configuration_tab">
               <property name="cursor">
@@ -1429,6 +1281,71 @@ background-color: rgb(111, 11, 11);
                <item>
                 <widget class="QWidget" name="configuration_widget" native="true">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QWidget" name="configuration_autotune_widget" native="true">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_15">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QLabel" name="configuration_autotune_label">
+                       <property name="text">
+                        <string>Autotuner:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignLeft">
+                      <widget class="QPushButton" name="configuration_autotune_pushButton">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>25</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Autotune</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
                   <item>
                    <widget class="QWidget" name="configuration_cpr_widget" native="true">
                     <property name="maximumSize">
@@ -1450,36 +1367,17 @@ background-color: rgb(111, 11, 11);
                      <property name="bottomMargin">
                       <number>0</number>
                      </property>
-                     <item row="0" column="1">
-                      <widget class="QLabel" name="configuration_rpm_label">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>RPM</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="configuration_cpr_label">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>CPR</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="1" column="0">
                       <widget class="QSpinBox" name="configuration_cpr_spinBox">
                        <property name="maximum">
                         <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLabel" name="configuration_rpm_label">
+                       <property name="text">
+                        <string>RPM</string>
                        </property>
                       </widget>
                      </item>
@@ -1490,6 +1388,68 @@ background-color: rgb(111, 11, 11);
                        </property>
                       </widget>
                      </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="configuration_cpr_label">
+                       <property name="text">
+                        <string>CPR</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="configuration_torque_widget" native="true">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_5">
+                     <item row="1" column="1">
+                      <widget class="QPushButton" name="configuration_on_off_button">
+                       <property name="styleSheet">
+                        <string notr="true">    QPushButton {
+        background-color: transparent;
+        border: none;
+        image: url(/home/bobamosfett/Desktop/SMDGUI/off-button.png);
+    }
+    QPushButton:checked {
+        image: url(/home/bobamosfett/Desktop/SMDGUI/on-button.png);
+    }</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="images/images.qrc">
+                         <normaloff>:/images/off-button.png</normaloff>:/images/off-button.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>45</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="configuration_torque_enable_label">
+                       <property name="text">
+                        <string>Torque Enable/Disable register controls the motor driver output.</string>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -1497,68 +1457,18 @@ background-color: rgb(111, 11, 11);
                    <widget class="QWidget" name="configuration_info_widget" native="true">
                     <layout class="QVBoxLayout" name="verticalLayout_11">
                      <item>
-                      <widget class="QWidget" name="configuration_autotune_widget" native="true">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
+                      <widget class="QLabel" name="configuration_info_label">
+                       <property name="text">
+                        <string>Settings can be saved to the computer and loaded from the computer at any time.</string>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_15">
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item alignment="Qt::AlignLeft">
-                         <widget class="QLabel" name="configuration_autotune_label">
-                          <property name="text">
-                           <string>Autotuner:</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item alignment="Qt::AlignLeft">
-                         <widget class="QPushButton" name="configuration_autotune_pushButton">
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>25</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>100</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="cursor">
-                           <cursorShape>PointingHandCursor</cursorShape>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QPushButton {
-background-color: rgb(111, 11, 11);
-border-radius: 3px;
-}
-QPushButton:hover {
-background-color: rgb(26, 95, 180);
-}
-QPushButton:pressed {
-background-color: rgb(98, 160, 234);
-}</string>
-                          </property>
-                          <property name="text">
-                           <string>Autotune</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="configuration_info_label_2">
+                       <property name="text">
+                        <string>The parameters of the selected actuator are read with &quot;Read Parameters&quot; 
+and the changes made are written into the actuator with Write Parameters.</string>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -1577,10 +1487,151 @@ background-color: rgb(98, 160, 234);
                <string>Position</string>
               </attribute>
               <layout class="QHBoxLayout" name="horizontalLayout_8">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QWidget" name="position_left_widget" native="true">
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <item row="0" column="0">
+                   <widget class="QWidget" name="position_top_left_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_13">
+                     <item>
+                      <widget class="QLabel" name="position_setpoint_label">
+                       <property name="text">
+                        <string>Setpoint</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="position_setpoint_Spinbox">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="position_presentposition_label">
+                       <property name="text">
+                        <string>Present Position</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="position_lineEdit"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QWidget" name="position_pid_widget" native="true">
+                    <layout class="QGridLayout" name="gridLayout_7">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="position_P_label">
+                       <property name="text">
+                        <string>P</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QDoubleSpinBox" name="position_I_doubleSpinBox"/>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="position_P_doubleSpinBox"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="position_I_label">
+                       <property name="text">
+                        <string>I</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="position_D_label">
+                       <property name="text">
+                        <string>D</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QDoubleSpinBox" name="position_D_doubleSpinBox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QWidget" name="position_maxposition_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_12">
+                     <item>
+                      <widget class="QLabel" name="position_maxposition_label">
+                       <property name="text">
+                        <string>MaxPosition</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="position_maxposition_spinbox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QWidget" name="position_minposition_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_9">
+                     <item>
+                      <widget class="QLabel" name="position_minposition_label">
+                       <property name="text">
+                        <string>Min Position</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="position_minposition_spinBox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
                <item>
-                <widget class="QFrame" name="frame">
+                <widget class="QPushButton" name="position_start_button">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true"/>
+                  <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Start</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="position_right_frame">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -1588,158 +1639,7 @@ background-color: rgb(98, 160, 234);
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_14">
-                  <item>
-                   <widget class="QWidget" name="position_left_widget" native="true">
-                    <property name="maximumSize">
-                     <size>
-                      <width>300</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_16">
-                     <item>
-                      <widget class="QWidget" name="position_top_left_widget" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_13">
-                        <item>
-                         <widget class="QLabel" name="position_setpoint_label">
-                          <property name="text">
-                           <string>Setpoint</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QSpinBox" name="position_setpoint_Spinbox">
-                          <property name="maximum">
-                           <number>10000</number>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="position_presentposition_label">
-                          <property name="text">
-                           <string>Present Position</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="position_lineEdit"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_19">
-                        <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_16">
-                          <item>
-                           <widget class="QWidget" name="position_minposition_widget" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_9">
-                             <item>
-                              <widget class="QLabel" name="position_minposition_label">
-                               <property name="text">
-                                <string>Min Position</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="position_minposition_spinBox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QWidget" name="position_maxposition_widget" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_12">
-                             <item>
-                              <widget class="QLabel" name="position_maxposition_label">
-                               <property name="text">
-                                <string>Max Position</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="position_maxposition_spinbox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                         </layout>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="pushButton_position_save">
-                          <property name="text">
-                           <string>Save eeprom</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="position_pid_widget" native="true">
-                       <layout class="QGridLayout" name="gridLayout_7">
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="position_P_label">
-                          <property name="text">
-                           <string>P</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QDoubleSpinBox" name="position_I_doubleSpinBox"/>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QDoubleSpinBox" name="position_P_doubleSpinBox"/>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="position_I_label">
-                          <property name="text">
-                           <string>I</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="position_D_label">
-                          <property name="text">
-                           <string>D</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QDoubleSpinBox" name="position_D_doubleSpinBox"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_3">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="frame_2">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
+                 <layout class="QHBoxLayout" name="horizontalLayout_16"/>
                 </widget>
                </item>
               </layout>
@@ -1749,166 +1649,136 @@ background-color: rgb(98, 160, 234);
                <string>Velocity</string>
               </attribute>
               <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QWidget" name="velocity_left_widget" native="true">
+                 <layout class="QGridLayout" name="gridLayout_4">
+                  <item row="2" column="0">
+                   <widget class="QWidget" name="velocity_bottom_left_widget" native="true">
+                    <layout class="QGridLayout" name="gridLayout_8">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="velocty_P_label">
+                       <property name="text">
+                        <string>P</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QDoubleSpinBox" name="velocty_I_doubleSpinBox"/>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="velocty_P_doubleSpinBox"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="velocty_I_label">
+                       <property name="text">
+                        <string>I</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="velocty_D_label">
+                       <property name="text">
+                        <string>D</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QDoubleSpinBox" name="velocty_D_doubleSpinBox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QWidget" name="velocity_middle_left_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_18">
+                     <item>
+                      <widget class="QLabel" name="velocity_maxvelocity_label">
+                       <property name="text">
+                        <string>Max Velocity</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="velocity_maxvelocity_spinbox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QWidget" name="velocity_top_left_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_17">
+                     <item>
+                      <widget class="QLabel" name="velocity_setpoint_label">
+                       <property name="text">
+                        <string>Setpoint</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="velocity_setpoint_spinbox">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="velocity_presentposition_label">
+                       <property name="text">
+                        <string>Present Position</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="velocity_presentposition_lineEdit"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
                <item>
-                <widget class="QFrame" name="frame_3">
+                <widget class="QPushButton" name="velocity_start_button">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Start</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="velocity_right_frame">
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_17">
-                  <item>
-                   <widget class="QWidget" name="velocity_left_widget" native="true">
-                    <property name="maximumSize">
-                     <size>
-                      <width>300</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <layout class="QGridLayout" name="gridLayout_4">
-                     <item row="3" column="0">
-                      <widget class="QWidget" name="velocity_bottom_left_widget" native="true">
-                       <layout class="QGridLayout" name="gridLayout_8">
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="velocty_P_label">
-                          <property name="text">
-                           <string>P</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QDoubleSpinBox" name="velocty_I_doubleSpinBox"/>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QDoubleSpinBox" name="velocty_P_doubleSpinBox"/>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="velocty_I_label">
-                          <property name="text">
-                           <string>I</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="velocty_D_label">
-                          <property name="text">
-                           <string>D</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QDoubleSpinBox" name="velocty_D_doubleSpinBox"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QWidget" name="velocity_top_left_widget" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_17">
-                        <item>
-                         <widget class="QLabel" name="velocity_setpoint_label">
-                          <property name="text">
-                           <string>Setpoint</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QSpinBox" name="velocity_setpoint_spinbox">
-                          <property name="maximum">
-                           <number>10000</number>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="velocity_presentposition_label">
-                          <property name="text">
-                           <string>Present Position</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="velocity_presentposition_lineEdit"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QWidget" name="widget_2" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_21">
-                        <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_18">
-                          <item>
-                           <widget class="QWidget" name="velocity_middle_left_widget" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_18">
-                             <item>
-                              <widget class="QLabel" name="velocity_maxvelocity_label">
-                               <property name="text">
-                                <string>Min Velocity</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="velocity_maxvelocity_spinbox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QWidget" name="widget_3" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_28">
-                             <item>
-                              <widget class="QLabel" name="label">
-                               <property name="text">
-                                <string>Max Velocity</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="maxVelocity_spinbox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                         </layout>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="pushButton">
-                          <property name="text">
-                           <string>Save eeprom</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QPushButton" name="pushButton_4">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="velocity_right_frame">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </widget>
                </item>
               </layout>
@@ -1918,166 +1788,136 @@ background-color: rgb(98, 160, 234);
                <string>Torque</string>
               </attribute>
               <layout class="QHBoxLayout" name="horizontalLayout_12">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QWidget" name="torque_left_widget" native="true">
+                 <layout class="QGridLayout" name="gridLayout_11">
+                  <item row="0" column="0">
+                   <widget class="QWidget" name="torque_top_left_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <item>
+                      <widget class="QLabel" name="torque_setpoint_label">
+                       <property name="text">
+                        <string>Setpoint</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="torque_setpoint_spinBox">
+                       <property name="maximum">
+                        <number>10000</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="torque_presentposition_label">
+                       <property name="text">
+                        <string>Present Position</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="torque_presentposition_lineEdit"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QWidget" name="torque_middle_left_widget" native="true">
+                    <layout class="QVBoxLayout" name="verticalLayout_23">
+                     <item>
+                      <widget class="QLabel" name="torque_maxtorque_label">
+                       <property name="text">
+                        <string>Max Torque</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QSpinBox" name="torque_maxtorque_spinBox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QWidget" name="torque_bottom_left_widget" native="true">
+                    <layout class="QGridLayout" name="gridLayout_9">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="torque_P_label">
+                       <property name="text">
+                        <string>P</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QDoubleSpinBox" name="torque_I_doubleSpinBox"/>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QDoubleSpinBox" name="torque_P_doubleSpinBox"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="torque_I_label">
+                       <property name="text">
+                        <string>I</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="torque_D_label">
+                       <property name="text">
+                        <string>D</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QDoubleSpinBox" name="torque_D_doubleSpinBox"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
                <item>
-                <widget class="QFrame" name="frame_4">
+                <widget class="QPushButton" name="torque_start_button">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+background-color: rgb(111, 11, 11);
+border-radius: 3px;
+}
+QPushButton:hover {
+background-color: rgb(26, 95, 180);
+}
+QPushButton:pressed {
+background-color: rgb(98, 160, 234);
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Start</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="torque_right_frame">
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_19">
-                  <item>
-                   <widget class="QWidget" name="torque_left_widget" native="true">
-                    <property name="maximumSize">
-                     <size>
-                      <width>300</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <layout class="QGridLayout" name="gridLayout_11">
-                     <item row="0" column="0">
-                      <widget class="QWidget" name="torque_top_left_widget" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_22">
-                        <item>
-                         <widget class="QLabel" name="torque_setpoint_label">
-                          <property name="text">
-                           <string>Setpoint</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QSpinBox" name="torque_setpoint_spinBox">
-                          <property name="maximum">
-                           <number>10000</number>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="torque_presentposition_label">
-                          <property name="text">
-                           <string>Present Position</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLineEdit" name="torque_presentposition_lineEdit"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QWidget" name="torque_bottom_left_widget" native="true">
-                       <layout class="QGridLayout" name="gridLayout_9">
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="torque_P_label">
-                          <property name="text">
-                           <string>P</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="1">
-                         <widget class="QDoubleSpinBox" name="torque_I_doubleSpinBox"/>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QDoubleSpinBox" name="torque_P_doubleSpinBox"/>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QLabel" name="torque_I_label">
-                          <property name="text">
-                           <string>I</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="0">
-                         <widget class="QLabel" name="torque_D_label">
-                          <property name="text">
-                           <string>D</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="2" column="1">
-                         <widget class="QDoubleSpinBox" name="torque_D_doubleSpinBox"/>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QWidget" name="widget_4" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_29">
-                        <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_20">
-                          <item>
-                           <widget class="QWidget" name="torque_middle_left_widget" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_23">
-                             <item>
-                              <widget class="QLabel" name="torque_maxtorque_label">
-                               <property name="text">
-                                <string>Min Torque</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="minTorque_sppinbox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QWidget" name="widget_5" native="true">
-                            <layout class="QVBoxLayout" name="verticalLayout_30">
-                             <item>
-                              <widget class="QLabel" name="label_2">
-                               <property name="text">
-                                <string>Max Torque</string>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="torque_maxtorque_spinBox"/>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                         </layout>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="pushButton_2">
-                          <property name="text">
-                           <string>Save eeprom</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item row="4" column="0">
-                      <widget class="QPushButton" name="pushButton_5">
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QFrame" name="torque_right_frame">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </widget>
                </item>
               </layout>
@@ -2246,55 +2086,6 @@ background-color: rgb(98, 160, 234);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page">
-          <layout class="QVBoxLayout" name="verticalLayout_31">
-           <item>
-            <widget class="QFrame" name="frame_5">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_32">
-              <item>
-               <widget class="QWidget" name="widget_6" native="true">
-                <property name="maximumSize">
-                 <size>
-                  <width>200</width>
-                  <height>200</height>
-                 </size>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_34">
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>../images/ezgif.com-gif-maker (8).gif</pixmap>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_33">
-                   <item>
-                    <widget class="QDialogButtonBox" name="buttonBox">
-                     <property name="standardButtons">
-                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
         </widget>
        </item>
       </layout>
@@ -2304,8 +2095,9 @@ background-color: rgb(98, 160, 234);
   </widget>
  </widget>
  <resources>
-  <include location="../images/images.qrc"/>
-  <include location="../../../icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
+  <include location="icons/icons.qrc"/>
+  <include location="images/images.qrc"/>
  </resources>
  <connections/>
 </ui>
