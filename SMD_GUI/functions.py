@@ -20,7 +20,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.animation import FuncAnimation
 from datetime import datetime
 from matplotlib.figure import Figure
-from motorPopUp import Ui_Form
+
 
 
 
@@ -32,8 +32,8 @@ class MainWindow(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         
-        self.movie = QMovie("images/gif.gif")
-        #self.ui.gif_label.setMovie(self.movie)
+        self.movie = QMovie("/home/bobamosfett/Documents/pythonWorkspace/SMD-GUI/images/gif.gif")
+        self.ui.scan_gif_label.setMovie(self.movie)
         self.ui.scan_button.enterEvent = self.start_gif
         self.ui.scan_ports_button.clicked.connect(self.find_ports)
 
@@ -41,13 +41,14 @@ class MainWindow(QMainWindow):
         self.ui.minimizeButton.clicked.connect(lambda: self.showMinimized())
         self.ui.restoreButton.clicked.connect(lambda: self.restore_or_maximize_window())
         self.ui.closeButton.clicked.connect(lambda: self.close())
-        movie = QMovie("Documents/pythonWorkspace/SMD-GUI/images/ezgif.com-gif-maker (8).gif")
+        self.movie_motor = QMovie("/home/bobamosfett/Documents/pythonWorkspace/SMD-GUI/images/ezgif.com-gif-maker (8).gif")
+        self.ui.label_4.setMovie(self.movie_motor)
         # Tree büyüme küçülme animasyon ataması
         self.ui.open_tree_Button.clicked.connect(self.slideTreeMenu)
 
         # Arayüz büyütme küçültme kısmı
-        #self.sizegrip = QSizeGrip(self.ui.resize_label)
-        #self.sizegrip.setStyleSheet("width: 10px; height: 10px; margin 0px; padding: 0px;")
+        self.sizegrip = QSizeGrip(self.ui.scan_resize_label)
+        self.sizegrip.setStyleSheet("width: 10px; height: 10px; margin 0px; padding: 0px;")
 
         # Başlık çubuğu sürükleme için kullanılan değişkenler
         self.dragging = False
@@ -116,8 +117,9 @@ class MainWindow(QMainWindow):
         self.ui.minTorque_sppinbox.editingFinished.connect(lambda: self.limit_torque(int(self.current_id)))
         self.ui.torque_maxtorque_spinBox.editingFinished.connect(lambda : self.limit_torque(int(self.current_id)))
         #firmware update
-        self.ui.configuration_autotune_pushButton.clicked.connect(lambda: self.show_popUp(int(self.current_id)))
+        self.ui.configuration_autotune_pushButton.clicked.connect(self.show_popUp)
         self.ui.buttonBox.rejected.connect(self.closePopUp)
+        self.ui.buttonBox.accepted.connect(lambda: self.autotuner(int(self.current_id)))
         # page changed
         self.ui.treeWidget.itemClicked.connect(self.motor_page)
         self.ui.homeButton.clicked.connect(self.turn_scan_page)
@@ -283,10 +285,9 @@ class MainWindow(QMainWindow):
             selected_item.setText(0, f"SMD ID: {text}")
             #self.master.update_driver_baudrate(int(current_id), int(baudrate))
             self.master.update_driver_id(int(current_id), int(new_id))
-    def show_popUp(self, id):
+    def show_popUp(self):
         self.ui.stackedWidget.setCurrentIndex(4)
-        self.ui.buttonBox.accepted.connect(self.autotuner(id))
-        
+        self.movie_motor.start()
     def closePopUp(self):
         self.ui.stackedWidget.setCurrentIndex(0)
         
@@ -463,8 +464,8 @@ class MainWindow(QMainWindow):
         
     def get_torque(self, id):
         self.ui.torque_presentposition_lineEdit.setText(str(self.master.get_torque(id)))
-        
     def autotuner(self, id):
+        print(id)
         self.ui.stackedWidget.setCurrentIndex(2)
         self.master.pid_tuner(id)
     def p_position(self,id):
