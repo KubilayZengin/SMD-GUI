@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1267</width>
+    <width>1120</width>
     <height>890</height>
    </rect>
   </property>
@@ -2316,14 +2316,14 @@ p, li { white-space: pre-wrap; }
                     <widget class="QLabel" name="label_4">
                      <property name="minimumSize">
                       <size>
-                       <width>300</width>
-                       <height>400</height>
+                       <width>200</width>
+                       <height>300</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>300</width>
-                       <height>400</height>
+                       <width>200</width>
+                       <height>300</height>
                       </size>
                      </property>
                      <property name="text">
